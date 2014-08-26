@@ -1,5 +1,6 @@
 #include <pebble.h>
 #include <time.h>
+#include "window_main.h"
 
 Window *my_window;
 
@@ -137,46 +138,12 @@ void click_config_provider(Window *my_window) {
 }
 
 void handle_init(void) {
-	my_window = window_create();
-  
-	window_set_fullscreen(my_window, true);
-	window_set_background_color(my_window, GColorBlack);
-	window_stack_push(my_window, true /* Animated */);
-  
-  Layer *my_window_layer = window_get_root_layer(my_window);
   /* GRect bounds = layer_get_frame(my_window_layer); */
 	
 	parse_time();
 	
-	GFont font_avenir_30 = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_AVENIR_30));
-	GFont font_avenir_50 = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_AVENIR_50));
-	
-	hour_layer = text_layer_create(GRect(0, 10, 144, 30));
-	text_layer_set_background_color(hour_layer, GColorBlack);
-	text_layer_set_text_color(hour_layer, GColorWhite);
-	text_layer_set_font(hour_layer, font_avenir_30);
-	text_layer_set_text_alignment(hour_layer, GTextAlignmentCenter);
-	text_layer_set_text(hour_layer, "");
-	layer_add_child(my_window_layer, text_layer_get_layer(hour_layer));
-	
-	
-	timer_layer = text_layer_create(GRect(0, 45, 144, 50));
-	text_layer_set_background_color(timer_layer, GColorBlack);
-	text_layer_set_text_color(timer_layer, GColorWhite);
-	text_layer_set_font(timer_layer, font_avenir_50);
-	text_layer_set_text_alignment(timer_layer, GTextAlignmentCenter);
-	text_layer_set_text(timer_layer, "-5:00");
-	layer_add_child(my_window_layer, text_layer_get_layer(timer_layer));
-	
-	
 	// 168 h
-	time_layer = text_layer_create(GRect(0, 124, 144, 50));
-	text_layer_set_text_alignment(time_layer, GTextAlignmentCenter);
-
-	text_layer_set_font(time_layer, fonts_get_system_font(FONT_KEY_BITHAM_34_MEDIUM_NUMBERS));
 	strcpy(time_str_buffer, "");
-	text_layer_set_text(time_layer, time_str_buffer);
-	layer_add_child(my_window_layer, text_layer_get_layer(time_layer));
 	
 	// Attach our desired button functionality
 	window_set_click_config_provider(my_window, (ClickConfigProvider) click_config_provider);
@@ -193,6 +160,7 @@ void handle_deinit(void) {
 }
 
 int main(void) {
+  show_window_main();
   handle_init();
   app_event_loop();
   handle_deinit();
