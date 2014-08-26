@@ -1,0 +1,38 @@
+{
+    "appKeys": {},
+    "capabilities": [
+        ""
+    ],
+    "companyName": "john@housser.ca",
+    "longName": "Yacht Racing",
+    "projectType": "native",
+    "resources": {
+        "media": [
+            {
+                "file": "images/icon.png",
+                "menuIcon": true,
+                "name": "IMAGE_MENU_ICON",
+                "type": "png"
+            },
+            {
+                "characterRegex": "[0-9:. -]",
+                "file": "fonts/Avenir.ttf",
+                "name": "FONT_AVENIR_50",
+                "type": "font"
+            },
+            {
+                "characterRegex": "[0-9:. -]",
+                "file": "fonts/Avenir.ttf",
+                "name": "FONT_AVENIR_30",
+                "type": "font"
+            }
+        ]
+    },
+    "shortName": "Yacht Racing",
+    "uuid": "192c20cb-6608-4859-bad9-5787d5d280b2",
+    "versionCode": 1,
+    "versionLabel": "1.0",
+    "watchapp": {
+        "watchface": false
+    }
+}
